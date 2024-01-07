@@ -2,7 +2,8 @@
 Password Generator Module
 
 > Built entirely in Elixir.
-[ ] - TODO: Unit tests
+
+- [ ] TODO: Unit tests
 
 Main function is generate/1 which takes an options map and returns an {:ok, string()}
 
