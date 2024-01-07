@@ -5,17 +5,17 @@ Password Generator Module
 
 - [ ] TODO: Unit tests
 
-Main function is generate/1 which takes an options map and returns an {:ok, string()}
+Ships with two generator functions: `generate/1 and generate!/1` that both take an Option map.
 
 Option tags are:
 | Tag | Description |
 | --- | ---|
-| length (integer) |  length of the password
+| length (integer)  |  length of the password
 | uppercase (bool)  | if the password contains uppercase letters
 | lowercase (bool)  | if the password contains lowercase letters
 | numbers (bool)    | if the password contains
 
-Ships with two generator functions: `generate/1 and generate!/1`.
+> length is a required tag.
 
 ```elixir
   @doc """
