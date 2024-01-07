@@ -59,13 +59,12 @@ defmodule PassGen do
 
   # check if all rest of the tags are valid and boolean
   defp validate_tags(options) do
-    rest = Map.delete(options, :length)
+    rest = Map.delete(options, :length) |> Enum.filter(fn {_k, v} -> v end)
 
     if not Enum.empty?(rest) and Enum.all?(rest, fn {k, v} ->
       k in @allowed_tags and is_boolean(v) end) do
 
-      Enum.filter(rest, fn {_k, v} -> v end)
-      |> generate_string(options.length)
+      generate_string(rest, options.length)
     else
       {:error, "Please provide valid tags and boolean values."}
     end
