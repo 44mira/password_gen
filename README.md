@@ -13,7 +13,8 @@ Option tags are:
 | length (integer)  |  length of the password
 | uppercase (bool)  | if the password contains uppercase letters
 | lowercase (bool)  | if the password contains lowercase letters
-| numbers (bool)    | if the password contains symbols
+| numbers (bool)    | if the password contains numbers
+| symbols (bool)    | if the password contains symbols
 
 > length is a required tag.
 
