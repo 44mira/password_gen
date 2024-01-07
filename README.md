@@ -1,21 +1,68 @@
 # PassGen
+Password Generator Module
 
-**TODO: Add description**
+> Built entirely in Elixir.
 
-## Installation
+Main function is generate/1 which takes an options map and returns an {:ok, string()}
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `pass_gen` to your list of dependencies in `mix.exs`:
+Option tags are:
+- length (integer)  # length of the password
+- uppercase (bool)  # if the password contains uppercase letters
+- lowercase (bool)  # if the password contains lowercase letters
+- numbers (bool)    # if the password contains
+
+Ships with two generator functions: `generate/1 and generate!/1`.
 
 ```elixir
-def deps do
-  [
-    {:pass_gen, "~> 0.1.0"}
-  ]
-end
+  @doc """
+  Main generator interace, takes in an options map.
+
+  Prefer over generate!/1 for error-handling.
+
+  The processing roadmap goes:
+  validate_length/2 -> validate_tags/1 -> generate_string/2
+
+  ## Examples:
+    options = %{
+      length: 6,
+      uppercase: false,
+      lowercase: true,
+      numbers: true,
+      symbols: true
+
+    iex> PassGen.generate(options)
+    {:ok, "aed34."}
+
+    options = %{
+      length: 3,
+      uppercase: false,
+      lowercase: false,
+      numbers: false,
+      symbols: true
+
+    iex> PassGen.generate(options)
+    {:ok, ".-?"}
+  """
+  @spec generate(options :: map()) :: {:ok, bitstring()} | {:error, bitstring()}
+
+//------------------------------------------------------------------------------------------//
+
+  @doc """
+  generate/1 but with no error-handling interface.
+
+  Invalid tag values are treated as false.
+  Throws an exception on invalid input or has undefined behavior.
+
+  ## Examples:
+    options = %{
+      length: 6,
+      uppercase: false,
+      lowercase: true,
+      numbers: true,
+      symbols: true
+
+    iex> PassGen.generate!(options)
+    "h?e4.l"
+  """
+  @spec generate!(options :: map()) :: bitstring()
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/pass_gen>.
-
