@@ -6,10 +6,12 @@ Password Generator Module
 Main function is generate/1 which takes an options map and returns an {:ok, string()}
 
 Option tags are:
-- length (integer)  # length of the password
-- uppercase (bool)  # if the password contains uppercase letters
-- lowercase (bool)  # if the password contains lowercase letters
-- numbers (bool)    # if the password contains
+| Tag | Description |
+| --- | ---|
+| length (integer) |  length of the password
+| uppercase (bool)  | if the password contains uppercase letters
+| lowercase (bool)  | if the password contains lowercase letters
+| numbers (bool)    | if the password contains
 
 Ships with two generator functions: `generate/1 and generate!/1`.
 
@@ -45,7 +47,7 @@ Ships with two generator functions: `generate/1 and generate!/1`.
   """
   @spec generate(options :: map()) :: {:ok, bitstring()} | {:error, bitstring()}
 
-//------------------------------------------------------------------------------------------//
+# //------------------------------------------------------------------------------------------//
 
   @doc """
   generate/1 but with no error-handling interface.
