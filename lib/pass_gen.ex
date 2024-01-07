@@ -19,7 +19,7 @@ defmodule PassGen do
   }
 
   @doc """
-  Main generator interace, takes in an options map.
+  Main generator interface, takes in an options map.
 
   Prefer over generate!/1 for error-handling.
 
